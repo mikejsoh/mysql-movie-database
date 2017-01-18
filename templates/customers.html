@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Customers</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../static/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/custom.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="../">Home</a>
+                    </li>
+                    <li>
+                        <a href="../staff/movies">Movies</a>
+                    </li>
+                    <li>
+                        <a href="../staff/genres">Genres</a>
+                    </li>
+                    <li>
+                        <a href="../staff/rooms">Rooms</a>
+                    </li>
+                    <li>
+                        <a href="../staff/showings">Showings</a>
+                    </li>
+                    <li>
+                        <a href="../staff/customers">Customers</a>
+                    </li>
+                    <li>
+                        <a href="../staff/attend">Attend</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <button type="button" data-toggle="collapse" data-target="#addform" class="btn btn-success">Add</button>
+                
+
+                <button type="button" data-toggle="collapse" data-target="#editform"  class="btn btn-info">Edit</button>
+
+
+
+                <button type="button" data-toggle="collapse" data-target="#deleteform" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center">
+                <div id="addform" class="collapse">
+                    <h2>Add Customer:</h2>
+                    <form action="addcustomer" method="post" class="">
+                        <div class="form-group">
+                            <label for="cID">Customer ID</label>
+                            <input type="text" name="CustomerID" class="form-control" id="cID" placeholder="Customer ID">
+                        </div>
+                        <div class="form-group">
+                            <label for="cFName">First Name</label>
+                            <input type="text" name="FirstName" class="form-control" id="cFName" placeholder="FirstName">
+                        </div>
+                        <div class="form-group">
+                            <label for="cLName">Last Name</label>
+                            <input type="text" name="LastName" class="form-control" id="cLName" placeholder="LastName">
+                        </div>
+                        <div class="form-group">
+                            <label for="cSex">Sex</label>
+                            <input type="text" name="Sex" class="form-control" id="cSex" placeholder="Sex">
+                        </div>
+                        <div class="form-group">
+                            <label for="cEmail">Email</label>
+                            <input type="text" name="Email" class="form-control" id="Email" placeholder="Email">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                    <br>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-md-offset-3 text-center">
+                <div id="editform" class="collapse">
+                    <h2>Modify Customer:</h2>
+                    <form action="editcustomer" method="post" class="">
+                        <div class="form-group">
+                            <label for="cID">Customer ID</label>
+                            <input type="text" name="CustomerID" class="form-control" id="cID" placeholder="Customer ID">
+                        </div>
+                        <div class="form-group">
+                            <label for="cFName">First Name</label>
+                            <input type="text" name="FirstName" class="form-control" id="cFName" placeholder="First Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="cLName">Last Name</label>
+                            <input type="text" name="LastName" class="form-control" id="cLName" placeholder="Last Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="cSex">Sex</label>
+                            <input type="text" name="Sex" class="form-control" id="cSex" placeholder="Sex">
+                        </div>
+                        <div class="form-group">
+                            <label for="cEmail">Email</label>
+                            <input type="text" name="Email" class="form-control" id="Email" placeholder="Email">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                    <br>
+                </div>
+            </div>
+
+            <div class="col-lg-12 text-center">
+                <div id="deleteform" class="collapse">
+                    <h2>Delete Customer:</h2>
+                    <form action="deletecustomer" method="post" class="form-inline">
+                        <div class="form-group">
+                            <label for="cID">CustomerID</label>
+                            <input type="text" name="CustomerID" class="form-control" id="cID" placeholder="CustomerID">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                    <br>
+                </div><!-- End of deleteform-->
+            </div>
+
+
+
+
+
+
+
+            <div class="col-md-6 col-md-offset-3 text-center">
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Customer ID</th>
+                            <th class="text-center">First Name</th>
+                            <th class="text-center">Last Name</th>
+                            <th class="text-center">Sex</th>
+                            <th class="text-center">Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for customer in customers %}
+                        <tr>
+                            <td>{{ customer.0 }}</td>
+                            <td>{{ customer.1 }}</td>
+                            <td>{{ customer.2 }}</td>
+                            <td>{{ customer.3 }}</td>
+                            <td>{{ customer.4 }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery Version 1.11.1 -->
+    <script src="../static/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../static/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

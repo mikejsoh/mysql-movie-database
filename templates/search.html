@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Search</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../static/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/custom.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--<a class="navbar-brand" href="#">Start Bootstrap</a>-->
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="../">Home</a>
+                    </li>
+                    <li>
+                        <a href="../front/search">Search</a>
+                    </li>
+                    <li>
+                        <a href="../front/attendshowing">Attend Showing</a>
+                    </li>
+                    <li>
+                        <a href="../front/rateshowing">Rate Showing</a>
+                    </li>
+                    <li>
+                        <a href="../front/ratedmovies">Rated Movies</a>
+                    </li>
+                    <li>
+                        <a href="../front/customerinfo">Customer Info</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+        <!-- Page Content -->
+
+    <div class="row">
+            <div class="col-lg-12 text-center">
+               <h1>Search Showings</h1>
+            </div>
+                
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <button type="button" data-toggle="collapse" data-target="#genreform" class="btn btn-success">Search by Genre</button>
+
+                <button type="button" data-toggle="collapse" data-target="#dateform"  class="btn btn-success">Search by Date</button>
+
+                 <form action="/front/submitshowings" method="post"><button type="submit" class="btn btn-success">Show Available Showings</button></form>
+
+                <button type="button" data-toggle="collapse" data-target="#titleform"  class="btn btn-success">Search by Movie Title</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center">
+                <div id=genreform class = "collapse">
+                    <form action="/front/submitgenre" method="post">
+                        <h4>Select Genre: </h4>
+                        <select name="SelectedGenre" class="form-control">
+                            {% for c in genres %}
+                            <option value="{{ c.0 }}">{{ c.0 }} {{ c.1 }} {{ c.2 }} </option>
+                            {% endfor %}
+                        </select>
+                        <br>
+                        <div class="checkbox">
+                            <label><input type="checkbox" name="check" value="True">Show Only Available Showings</label>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </form>
+                    <br>
+                </div>
+            </div>
+
+          
+          <div class="col-md-6 col-md-offset-3 text-center">
+            <div id="titleform" class="collapse">
+                <form action="/front/submittitle" method="post">
+                    <h4>Seach Movie Title:</h4>
+                    <div class="form-group">
+                            <label for="mName">Movie Name</label>
+                            <input type="text" name="MovieName" class="form-control" id="mName" placeholder="Movie Name">
+                        </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+                <br>
+                </div>
+            </div>
+          </div>
+
+          
+            <div class="col-md-6 col-md-offset-3 text-center">
+            <div id=dateform class = "collapse">
+                <form action="/front/submitdate" method="post">
+                <h3>Search by Date: </h3><br>
+                <h4> Start Date </h4>
+                    <select name="StartDate" class="form-control">
+                        {% for d in dates %}
+                        <option value="{{ d.0 }}">{{ d.0 }} {{ d.1 }} {{ d.2 }} </option>
+                        {% endfor %}
+                    </select>
+
+                 <h4>End Date </h4>
+                    <select name="EndDate" class="form-control">
+                        {% for d in dates %}
+                        <option value="{{ d.0 }}">{{ d.0 }} {{ d.1 }} {{ d.2 }} </option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+                <br>
+                </div>
+                </div>
+
+                    </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery Version 1.11.1 -->
+    <script src="../static/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../static/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

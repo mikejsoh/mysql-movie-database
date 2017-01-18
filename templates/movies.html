@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Movies</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../static/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/custom.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="../">Home</a>
+                    </li>
+                    <li>
+                        <a href="../staff/movies">Movies</a>
+                    </li>
+                    <li>
+                        <a href="../staff/genres">Genres</a>
+                    </li>
+                    <li>
+                        <a href="../staff/rooms">Rooms</a>
+                    </li>
+                    <li>
+                        <a href="../staff/showings">Showings</a>
+                    </li>
+                    <li>
+                        <a href="../staff/customers">Customers</a>
+                    </li>
+                    <li>
+                        <a href="../staff/attend">Attend</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <button type="button" data-toggle="collapse" data-target="#addform" class="btn btn-success">Add</button>
+                
+
+                <button type="button" data-toggle="collapse" data-target="#editform"  class="btn btn-info">Edit</button>
+
+
+
+                <button type="button" data-toggle="collapse" data-target="#deleteform" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div id="addform" class="collapse">
+                    <h2>Add Movie:</h2>
+                    <form action="addmovie" method="post" class="form-inline">
+                        <div class="form-group">
+                            <label for="movieID">Movie ID</label>
+                            <input type="text" name="MovieID" class="form-control" id="movieID" placeholder="Movie ID">
+                        </div>
+                        <div class="form-group">
+                            <label for="mName">Movie Title</label>
+                            <input type="text" name="MovieName" class="form-control" id="mName" placeholder="Movie Title">
+                        </div>
+                        <div class="form-group">
+                            <label for="mYear">Movie Year</label>
+                            <input type="text" name="YearReleased" class="form-control" id="mYear" placeholder="Movie Year">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                    <br>
+                </div> 
+            </div>
+
+            <div class="col-lg-12 text-center">
+                <div id="editform" class="collapse">
+                        <h2>Edit Movie</h2>
+                        <form action="editmovie" method="post" class="form-inline">
+                        <div class="form-group">
+                        <label for="movieID">MovieID</label>
+                        <input type="text" name="MovieID" class="form-control" id="movieID" placeholder="MovieID">
+                        </div>
+
+                        <div class="form-group">
+                        <label for="mName">Movie Title</label>
+                        <input type="text" name="MovieName" class="form-control" id="mName" placeholder="Movie Title">
+                        </div>
+
+                        <div class="form-group">
+                        <label for="mYear">Year Released</label>
+                        <input type="text" name="YearReleased" class="form-control" id="mYear" placeholder="Year Released">
+                        </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                        <br>
+                    </div>
+            </div>
+
+
+                <!--
+                <div class="col-md-6 col-md-offset-3 text-center">
+                    <div id="editform" class="collapse">
+                        <h3>Edit Movie</h2>
+                        <form action="editmovie" method="post" class="">
+                        <h4>Select movie to edit: </h4>
+                            <select name="MovieID" class="form-control">
+                                {% for movie in movies %}
+                                <option >{{ movie.0 }}  | {{ movie.1 }} | {{ movie.2 }}</option>
+                                {% endfor %}
+                            </select>
+                            {{posts}}
+                            <br>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                        <br>
+                    </div>
+                </div>-->
+
+                <div class="col-md-6 col-md-offset-3 text-center">
+                    <div id="deleteform" class="collapse">
+                        <h3>Delete Movie:</h2>
+                        <form action="deletemovie" method="post" class="form-inline">
+                            <div class="form-group">
+                                <label for="movieID">Movie ID</label>
+                                <input type="text" name="MovieID" class="form-control" id="movieID" placeholder="Movie ID">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                        <br>
+                    </div>
+                </div>
+            
+                
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Movie ID</th>
+                            <th class="text-center">Title</th>
+                            <th class="text-center">Year</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for movie in movies %}
+                        <tr>
+                            <td>{{ movie.0 }}</td>
+                            <td>{{ movie.1 }}</td>
+                            <td>{{ movie.2 }}</td>  
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery Version 1.11.1 -->
+    <script src="../static/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../static/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
